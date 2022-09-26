@@ -8,8 +8,22 @@ const html = Array.from(Array(limit)).map((item, i)=>{
 
 ratingContainer.innerHTML = html.join('');
 
-document.querySelector(".item").forEach((item)=>{
-    item.addEventListener("mouseover", (e)=>{
-        const pos = item.getAttribute("data-pos");
+document.querySelectorAll(".item").forEach((ite)=>{
+    ite.addEventListener("mouseover", (e)=>{
+        const pos = ite.getAttribute("data-pos");
+
+        document.querySelectorAll('.item').forEach(it=>{
+           if(it.classList.contains ('item-full')){
+              it.classList.remove('item-full');
+           }
+        });
+        
+        for(let i=0; i<= pos; i++){
+            const square = document.querySelector(`.item-${i}`);
+            if(!square.classList.contains("item-full")){
+                square.classList.add('item-full');
+            }
+        }
     })
 });
+
