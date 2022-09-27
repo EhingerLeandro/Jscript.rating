@@ -1,6 +1,6 @@
 const ratingContainer = document.querySelector(".rating");
 let currentValue =0;
-const limit = 5;
+const limit = 10;
 
 const html = Array.from(Array(limit)).map((item, i)=>{
     return `<div class="item item-${i}" data-pos="${i}"></div>`;
@@ -11,7 +11,9 @@ ratingContainer.innerHTML = html.join('');
 document.querySelectorAll(".item").forEach((ite)=>{
     ite.addEventListener("mouseover", (e)=>{
         const pos = ite.getAttribute("data-pos");
-
+        if(currentValue === parseInt(pos)+1){
+            return;
+        }
         document.querySelectorAll('.item').forEach(it=>{
            if(it.classList.contains ('item-full')){
               it.classList.remove('item-full');
@@ -24,6 +26,15 @@ document.querySelectorAll(".item").forEach((ite)=>{
                 square.classList.add('item-full');
             }
         }
+        currentValue = parseInt(pos)+1;
+
     })
+
+    ite.addEventListener("click", (e)=>{
+        const pos = ite.getAttribute("data-pos");
+        currentValue =parseInt(pos)+1;
+        console.log(currentValue);
+    })
+
 });
 
