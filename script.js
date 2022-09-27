@@ -27,14 +27,12 @@ document.querySelectorAll(".item").forEach((ite)=>{
             }
         }
         currentValue = parseInt(pos)+1;
-
     })
-
+    
     ite.addEventListener("click", (e)=>{
         const pos = ite.getAttribute("data-pos");
         currentValue =parseInt(pos)+1;
         console.log(currentValue);
     })
-
 });
 
